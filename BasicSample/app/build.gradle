@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+repositories {
+    mavenCentral()
+    maven{ url 'http://www.mobileenerlytics.com/artifactory/ext-release-local' }
+}
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
+    defaultConfig {
+        applicationId "com.example.android.testing.espresso.BasicSample"
+        minSdkVersion 10
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.1"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    productFlavors {
+    }
+}
+
+
+
+dependencies {
+    // App dependencies
+    compile 'com.android.support:support-annotations:23.0.1'
+    compile 'com.google.guava:guava:19.0'
+    // Testing-only dependencies
+    // Force usage of support annotations in the test app, since it is internally used by the runner module.
+    androidTestCompile 'com.android.support:support-annotations:23.0.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+
+    testCompile 'io.appium:java-client:3.3.0'
+    testCompile 'org.seleniumhq.selenium:selenium-server:2.52.0'
+    testCompile 'org.xerial:sqlite-jdbc:3.7.2'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.46.0'
+    testCompile 'com.mobileenerlytics:eagle-tester-appium:1.0'
+}
